@@ -1,7 +1,7 @@
 /*
- * @Author: your name
+ * @Author: yy
  * @Date: 2020-09-15 14:07:17
- * @LastEditTime: 2020-09-15 14:10:47
+ * @LastEditTime: 2020-09-15 14:30:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/master/vue.config.js

@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
- * @Date: 2020-09-15 14:00:21
- * @LastEditTime: 2020-09-15 16:19:36
+ * @Date: 2020-09-15 14:36:19
+ * @LastEditTime: 2020-09-15 15:20:47
  * @LastEditors: your name
  * @Description: In User Settings Edit
- * @FilePath: /qiankun-demo/master/src/views/Home.vue
+ * @FilePath: /qiankun-demo/vue-demo/src/views/Home.vue
 -->
 <template>
   <div class="home">
-    master
+    vue-demo home 11111111
   </div>
 </template>
 
