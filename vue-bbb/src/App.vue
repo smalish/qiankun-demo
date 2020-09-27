@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2020-09-15 15:19:54
- * @LastEditTime: 2020-09-15 16:30:03
- * @LastEditors: your name
+ * @LastEditTime: 2020-09-27 15:29:39
+ * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/vue-bbb/src/App.vue
 -->
@@ -10,6 +10,9 @@
   <div id="nav" class="vue-bbb">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+    <div>
+      项目 vue-bbb
+    </div>
   </div>
   <router-view/>
 </template>

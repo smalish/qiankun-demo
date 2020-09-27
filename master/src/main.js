@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-09-15 14:00:21
- * @LastEditTime: 2020-09-15 17:11:22
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-09-27 15:23:25
+ * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/master/src/main.js
  */
@@ -81,7 +81,7 @@ import {
                 entry: "//localhost:2851",
                 render,
                 activeRule: genActiveRule("/aaa"),
-                props: {param: 'msg-aaa'}// 传递给子应用
+                // props: {param: 'msg-aaa'}// 传递给子应用
             },
             {
                 name: "vue-bbb",
@@ -112,11 +112,11 @@ import {
     
     // 设置默认子应用,参数与注册子应用时genActiveRule("/aaa")函数内的参数一致
     setDefaultMountApp("/aaa");
-
-    // 启动微服务
-    start();
   
     // 第一个子应用加载完毕回调
     runAfterFirstMounted(()=>{});
+
+    // 启动微服务
+    start();
   
 

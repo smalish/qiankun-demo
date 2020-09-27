@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-09-15 14:42:39
- * @LastEditTime: 2020-09-15 17:36:21
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-09-27 19:37:34
+ * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/vue-demo/src/core/life-cycle.js
  */
@@ -14,7 +14,7 @@ import store from '@/store'
 import routeMatch from "@/router/routes-match";
 // import appStore from "@/utils/app-store";
 
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 
 const __qiankun__ = window.__POWERED_BY_QIANKUN__;
 let router = null;
