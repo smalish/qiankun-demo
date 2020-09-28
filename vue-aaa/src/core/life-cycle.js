@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-15 14:42:39
- * @LastEditTime: 2020-09-27 19:37:34
+ * @LastEditTime: 2020-09-28 14:46:28
  * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/vue-demo/src/core/life-cycle.js
@@ -32,10 +32,21 @@ const lifeCycle = () => {
        * @description 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等
        */
       async bootstrap(props) {
+        // 获取主应用传来的数据
+        // qiankun 对于 props 的应用类似于 react 框架的父子组件通信，传入 data 数据供自组件使用，传入 fn 函数给子组件触发向上回调。
         console.log('------props:', props)
+        props && props.fuBack('back-aaa')
         /* props.emits.forEach(i => {
           Vue.prototype[`$${i.name}`] = i;
         }); */
+        // 在子应用中注册呼机
+        // let {pager} = props
+        // pager.subscribe((v) => {
+        //   // 在子应用注册呼机监听器，这里可以监听到其他应用的广播
+        //   console.log(`监听到子应用${v.from}发来消息：`, v);
+        //   // store.dispatch('app/setToken', v.token)   // 在子应用中监听到其他应用广播的消息后处理逻辑
+        // });
+        // Vue.prototype.$pager = pager; // 将呼机挂载在vue实例
       },
       /**
        * @name 实例化微应用
@@ -75,7 +86,7 @@ const lifeCycle = () => {
  * @description {Array} routes 主应用请求获取注册表后，从服务端拿到路由数据
  * @description {String} 子应用路由前缀 主应用请求获取注册表后，从服务端拿到路由数据
  */
-const render = ({ routes, routerBase, container } = {}) => {
+const render = ({ routes, routerBase='/aaa/#', container } = {}) => {
   console.log('render vue-aaa -------------')
     // Vue.config.productionTip = false;
     router = createRouter({

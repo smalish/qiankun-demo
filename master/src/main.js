@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-15 14:00:21
- * @LastEditTime: 2020-09-27 15:23:25
+ * @LastEditTime: 2020-09-28 14:28:34
  * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/master/src/main.js
@@ -17,6 +17,15 @@ import {
     setDefaultMountApp, // 设置默认装载子应用
     start // 启动
 } from "qiankun";
+
+// 引入呼机, 主子应用间动态通信
+// import pager from './util/pager'
+
+// pager.subscribe((v) => {
+//     // 在主应用注册呼机监听器，这里可以监听到其他应用的广播
+//     console.log(`监听到子应用${v.from}发来消息：`, v);
+//     store.dispatch('app/setToken', v.token); // 这里处理主应用监听到改变后的逻辑
+// });
 
 /**
  * @name 微前端基座主应用vue实例化
@@ -74,14 +83,33 @@ import {
     render();
     
     // 注册子应用
+    /**
+     * @Author: yangying01
+     * @description: registerMicroApps(apps, lifeCycles?)
+     * @param {
+            apps: apps - Array<RegistrableApp> - 必选，微应用的一些注册信息,
+            lifeCycles - LifeCycles - 可选，全局的微应用生命周期钩子    
+        } 
+     * @return {null} 
+     * 具体接口api参考： https://qiankun.umijs.org/zh/api#registermicroappsapps-lifecycles
+     */
     registerMicroApps(
         [
             {
                 name: "vue-aaa",
                 entry: "//localhost:2851",
-                render,
+                // render,
+                container: '#root-view',
                 activeRule: genActiveRule("/aaa"),
-                // props: {param: 'msg-aaa'}// 传递给子应用
+                // 传递给子应用
+                props: {
+                    param: 'msg-aaa',
+                    fuBack: function(param){
+                        console.log('主应用传入函数执行， param = ', param)
+                    },
+                    // pager, // 从主应用下发应用间通信呼机
+                },
+                
             },
             {
                 name: "vue-bbb",

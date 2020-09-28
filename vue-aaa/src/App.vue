@@ -1,17 +1,19 @@
 <!--
  * @Author: your name
  * @Date: 2020-09-15 14:36:19
- * @LastEditTime: 2020-09-15 16:30:13
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-09-28 11:26:04
+ * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/vue-demo/src/App.vue
 -->
 <template>
-  <div id="nav" class="vue-aaa">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <div id="nav" class="vue-aaa">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
-  <router-view/>
 </template>
 
 <style lang="less">
