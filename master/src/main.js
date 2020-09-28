@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-15 14:00:21
- * @LastEditTime: 2020-09-28 14:28:34
+ * @LastEditTime: 2020-09-28 16:28:59
  * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/master/src/main.js
@@ -19,13 +19,13 @@ import {
 } from "qiankun";
 
 // 引入呼机, 主子应用间动态通信
-// import pager from './util/pager'
+import pager from './util/pager'
 
-// pager.subscribe((v) => {
-//     // 在主应用注册呼机监听器，这里可以监听到其他应用的广播
-//     console.log(`监听到子应用${v.from}发来消息：`, v);
-//     store.dispatch('app/setToken', v.token); // 这里处理主应用监听到改变后的逻辑
-// });
+pager.subscribe((v) => {
+    // 在主应用注册呼机监听器，这里可以监听到其他应用的广播
+    console.log(`监听到子应用${v.from}发来消息：`, v);
+    store.dispatch('app/setToken', v.token); // 这里处理主应用监听到改变后的逻辑
+});
 
 /**
  * @name 微前端基座主应用vue实例化
@@ -107,7 +107,7 @@ import {
                     fuBack: function(param){
                         console.log('主应用传入函数执行， param = ', param)
                     },
-                    // pager, // 从主应用下发应用间通信呼机
+                    pager, // 从主应用下发应用间通信呼机
                 },
                 
             },
@@ -117,6 +117,20 @@ import {
                 render,
                 activeRule: genActiveRule("/bbb"),
                 //   props: 'msg-bbb' // 传递给子应用
+            },
+            {
+                name: "vue-ccc",
+                entry: "//localhost:2853",
+                render,
+                activeRule: genActiveRule("/ccc"),
+                // 传递给子应用
+                props: {
+                    param: 'msg-ccc',
+                    fuBack: function(param){
+                        console.log('主应用传入函数执行， param = ', param)
+                    },
+                    pager, // 从主应用下发应用间通信呼机
+                },
             },
         ],
         {

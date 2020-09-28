@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-15 14:42:39
- * @LastEditTime: 2020-09-28 14:46:28
+ * @LastEditTime: 2020-09-28 16:24:24
  * @LastEditors: yangying01
  * @Description: In User Settings Edit
  * @FilePath: /qiankun-demo/vue-demo/src/core/life-cycle.js
@@ -19,6 +19,7 @@ import routeMatch from "@/router/routes-match";
 const __qiankun__ = window.__POWERED_BY_QIANKUN__;
 let router = null;
 let instance = null;
+let pager = null
 
 /**
  * @name 导出生命周期函数
@@ -40,12 +41,12 @@ const lifeCycle = () => {
           Vue.prototype[`$${i.name}`] = i;
         }); */
         // 在子应用中注册呼机
-        // let {pager} = props
-        // pager.subscribe((v) => {
-        //   // 在子应用注册呼机监听器，这里可以监听到其他应用的广播
-        //   console.log(`监听到子应用${v.from}发来消息：`, v);
-        //   // store.dispatch('app/setToken', v.token)   // 在子应用中监听到其他应用广播的消息后处理逻辑
-        // });
+        pager = props.pager
+        pager.subscribe((v) => {
+          // 在子应用注册呼机监听器，这里可以监听到其他应用的广播
+          console.log(`监听到子应用${v.from}发来消息：`, v);
+          // store.dispatch('app/setToken', v.token)   // 在子应用中监听到其他应用广播的消息后处理逻辑
+        });
         // Vue.prototype.$pager = pager; // 将呼机挂载在vue实例
       },
       /**
@@ -93,7 +94,7 @@ const render = ({ routes, routerBase='/aaa/#', container } = {}) => {
       history: createWebHistory(__qiankun__ ? routerBase : "/"),
       routes: __qiankun__ ? routeMatch(routes, routerBase) : selfRoutes
     });
-    instance = createApp(App).use(router).use(store).mount(container ? container.querySelector("#app") : "#app");
+    instance = createApp(App, {pager: pager}).use(pager).use(router).use(store).mount(container ? container.querySelector("#app") : "#app");
 };
 
 console.log('render >>>>>>>>')
